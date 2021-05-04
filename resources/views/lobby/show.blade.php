@@ -64,8 +64,10 @@
                     </div>
                 </td>
                 <td class="border" width="400">
-                    <strong> Модель выбранного оперативника</strong>
-                    <div position="bottom">1</div>
+                    <div style="height: 400px"><strong> Модель выбранного оперативника</strong></div>
+
+                    <div style="position:inherit;bottom:-1px" class="table table-bordered">Блок переключаемых улучшений, расходников</div>
+                    <div style="position:inherit;bottom:-1px" class="table table-bordered">Кнопка кастомизации</div>
                 </td>
             </tr>
         </table>
