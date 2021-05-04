@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> {{ $article->title }}</h2>
+                <h2> Lobby # {{$lobby->id}}</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('home') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('lobby.list') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -17,46 +17,61 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                {!! html_entity_decode($article->text) !!}
+                <strong>Карта:</strong>
+                {{ $lobby->map->name }}
             </div>
         </div>
     </div>
 
-    <table class="table table-bordered">
-        <tr>
-            <th>Имя</th>
-            <th>Текст</th>
-        </tr>
-
-        @foreach ($article->commentThreads as $commentThread)
+    <div>
+        <table>
             <tr>
-                <td>{{ $commentThread->user->name }}</td>
-                <td>{{ $commentThread->text }}</td>
+                <td>
+                    <div align="left">
+                        <strong>Команда 1</strong>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Игрок</th>
+                                <th>Оперативник</th>
+                                <th>Расходники, улучшения</th>
+                            </tr>
+
+                            @for($i = 1; $i <=4; $i++)
+                                <tr>
+                                    <td>Player {{$i}}</td>
+                                    <td>Operative Name/Role Icon</td>
+                                    <td>Иконки улучшений, расходников (?)</td>
+                                </tr>
+                            @endfor
+                        </table>
+
+                        <strong>Команда 1</strong>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Игрок</th>
+                                <th>Оперативник</th>
+                                <th>Расходники, улучшения</th>
+                            </tr>
+
+                            @for($i = 1; $i <=4; $i++)
+                                <tr>
+                                    <td>Player {{$i}}</td>
+                                    <td>Operative Name/Role Icon</td>
+                                    <td>Иконки улучшений, расходников (?)</td>
+                                </tr>
+                            @endfor
+                        </table>
+                    </div>
+                </td>
+                <td class="border" width="400">
+                    <strong> Модель выбранного оперативника</strong>
+                    <div position="bottom">1</div>
+                </td>
             </tr>
-            @if(!empty($commentThread->comments))
-                @foreach($commentThread->comments as $comment)
-                    <tr>
-                        <td></td>
-                        <td>{{ $comment->user_id }}</td>
-                        <td>{{ $comment->text }}</td>
-                    </tr>
-                @endforeach
-            @endif
-        @endforeach
-    </table>
+        </table>
+    </div>
 
-    @if(Auth::check())
-        <form action="{{ route('commentThreads.store') }}" method="POST">
-            @csrf
 
-            <div class="form-group">
-                <label for="text">Введите текст комментария</label>
-                <textarea class="form-control" id="text" name="text" rows="2"></textarea>
-                <input type="hidden" value="{{ $article->id }}" name="article_id">
-            </div>
-
-            <button type="submit" class="btn btn-primary">ОК</button>
-        </form>
-    @endif
+    </div>
 
 @endsection

@@ -10,6 +10,6 @@ class Lobby extends Model
 
     public function map()
     {
-        return $this->hasOne('App\Map');
+        return $this->belongsTo('App\Map', 'map_id');
     }
 }

@@ -40,10 +40,10 @@ class LobbyController extends Controller
         $lobby->map_id = $request->map_id;
         $lobby->user_id = 1; //Auth::id();
         if (!empty($request->is_hidden)) {
-            $lobby->is_hidden = $request->is_hidden;
+            $lobby->is_hidden = (int)$request->is_hidden;
         }
         if (!empty($request->is_etalon_mode)) {
-            $lobby->is_etalon_mode = $request->is_etalon_mode;
+            $lobby->is_etalon_mode = (int)$request->is_etalon_mode;
         }
         $lobby->description = $request->description ?? '';
 

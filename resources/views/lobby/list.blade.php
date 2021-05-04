@@ -41,7 +41,7 @@
                     ЭР: <input type="checkbox" @if($lobby->is_etalon_mode == 1) checked @endif disabled>
                 </td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('show',$lobby->id) }}">Войти</a>
+                    <a class="btn btn-info" href="{{ route('lobby.show',$lobby->id) }}">Войти</a>
                 </td>
             </tr>
         @endforeach
